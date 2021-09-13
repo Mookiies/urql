@@ -24,7 +24,7 @@ import {
   SerializedRequest,
   OptimisticMutationConfig,
   Variables,
-  CacheExchangeOpts,
+  OfflineExchangeOpts,
 } from './types';
 
 import { makeDict } from './helpers/dict';
@@ -66,13 +66,14 @@ const isOfflineError = (error: undefined | CombinedError) =>
       error.networkError.message
     ));
 
-export const offlineExchange = <C extends Partial<CacheExchangeOpts>>(
+export const offlineExchange = <C extends OfflineExchangeOpts>(
   opts: C
 ): Exchange => input => {
   const { storage } = opts;
 
   if (
     storage &&
+    // @ts-ignore
     storage.onOnline &&
     storage.readMetadata &&
     storage.writeMetadata

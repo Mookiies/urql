@@ -146,6 +146,10 @@ export type CacheExchangeOpts = {
   storage?: StorageAdapter;
 };
 
+export type OfflineExchangeOpts = Omit<CacheExchangeOpts, 'storage'> & {
+  storage: OfflineStorageAdapter;
+};
+
 // Cache resolvers are user-defined to overwrite an entity field result
 export type Resolver<
   ParentData = DataFields,
@@ -221,6 +225,8 @@ export interface StorageAdapter {
   writeMetadata?(json: SerializedRequest[]): void;
   onOnline?(cb: () => void): any;
 }
+
+export type OfflineStorageAdapter = Required<StorageAdapter>;
 
 export type Dependencies = Record<string, true>;
 

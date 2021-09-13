@@ -1,4 +1,8 @@
-import { SerializedEntries, SerializedRequest, StorageAdapter } from '../types';
+import {
+  SerializedEntries,
+  SerializedRequest,
+  OfflineStorageAdapter,
+} from '../types';
 
 const getRequestPromise = <T>(request: IDBRequest<T>): Promise<T> => {
   return new Promise((resolve, reject) => {
@@ -27,7 +31,7 @@ export interface StorageOptions {
   maxAge?: number;
 }
 
-export interface DefaultStorage extends StorageAdapter {
+export interface DefaultStorage extends OfflineStorageAdapter {
   clear(): Promise<any>;
 }
 
