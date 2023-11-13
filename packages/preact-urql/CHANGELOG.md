@@ -1,5 +1,12 @@
 # @urql/preact
 
+## 4.0.4
+
+### Patch Changes
+
+- Prioritise `context.suspense` and fallback to checking `client.suspense`
+  Submitted by [@JoviDeCroock](https://github.com/JoviDeCroock) (See [#3427](https://github.com/urql-graphql/urql/pull/3427))
+
 ## 4.0.3
 
 ### Patch Changes
